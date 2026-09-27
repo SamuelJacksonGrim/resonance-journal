@@ -6,6 +6,62 @@
 [![dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)](pyproject.toml)
 [![built with](https://img.shields.io/badge/built%20with-Architecture--Blueprints--Frameworks-orange)](https://github.com/SamuelJacksonGrim/Architecture-Blueprints-Frameworks)
 
+## Case study: testing a build framework with one-shot AI builds
+
+*A two-minute read. This repo is the first build in a series of controlled
+trials I ran to test and improve my
+[Architecture-Blueprints-Frameworks](https://github.com/SamuelJacksonGrim/Architecture-Blueprints-Frameworks), a method any AI can follow to
+design and build software from a plain request.*
+
+**How I work:** I state the intent. The AI builds the whole thing without
+asking permission at each step. Then I inspect the result, decide what's wrong,
+and direct the fix. Every step below is a public commit or PR.
+
+1. **Trial 1: this repo.** Claude built this journal in one pass from a short
+   request. It worked, and it was tested. But I judged that it did only the
+   literal verbs: no delete, no import, no date search, no multi-hop links. The
+   framework never asked what a user would expect without saying it.
+   ([scored history](evals/journal-rubric.md))
+2. **Fixing the method, not the app.** I directed changes to the framework
+   itself:
+   - implied features ("export" means "import" too);
+   - clear rules for when to ask the human and when to just build;
+   - definitions of the escalation triggers;
+   - a portable validator.
+
+   Fresh AI agents that had never seen the discussion ran the new intake on
+   different requests. Their confusion drove a second round of fixes.
+   ([PR #11](https://github.com/SamuelJacksonGrim/Architecture-Blueprints-Frameworks/pull/11), [PR #12](https://github.com/SamuelJacksonGrim/Architecture-Blueprints-Frameworks/pull/12))
+3. **Trial 2: a contaminated re-run.** A fresh session rebuilt the journal, but
+   it found the grading rubric inside the framework and said so. I ruled that
+   answer keys can't live in the system under test and removed them.
+   ([PR #13](https://github.com/SamuelJacksonGrim/Architecture-Blueprints-Frameworks/pull/13),
+   [re-run repo](https://github.com/SamuelJacksonGrim/resonance-journal-rerun))
+4. **Trial 3: blind.** I wrote a deliberately vague, one-shot prompt the
+   framework had never seen: *"Build me something that weighs semantic
+   relationships between words for storage that makes accessing them easy for
+   an AI to pull when relevant."* The result: a local semantic memory with
+   multi-hop recall that explains why each result was pulled, bounded storage,
+   an MCP server, and 28 passing tests. It came with no model downloads or API
+   calls, and with its own list of expected-but-unstated features.
+   ([blind repo](https://github.com/SamuelJacksonGrim/resonance-journal-blind))
+5. **Carrying it back.** Reviewing that build surfaced an accent-matching bug
+   ("zurich" vs "Zürich"). I had it fixed there, then found the same class of
+   bug in my main project's fallback search and fixed that too, with tests.
+   ([blind fix](https://github.com/SamuelJacksonGrim/resonance-journal-blind/commit/11643c9),
+   [resonance-memory #40](https://github.com/SamuelJacksonGrim/resonance-memory/pull/40))
+6. **Tightening the loop.** Finally I pressure-tested the method's own rules.
+   What does "complete" mean? What should an improvement round do when a check
+   fails? I settled both.
+   ([PR #18](https://github.com/SamuelJacksonGrim/Architecture-Blueprints-Frameworks/pull/18))
+
+**What it shows:** the AI does the construction, and I do the judging. The
+judging is where I spend my time:
+- deciding which gaps matter;
+- designing tests that can't be gamed;
+- ruling on contamination;
+- knowing when an AI's own finding is wrong.
+
 ## License
 
 This project is dual-licensed under **AGPL-3.0-only** OR a commercial license.
