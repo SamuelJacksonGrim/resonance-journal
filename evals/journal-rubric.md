@@ -71,4 +71,38 @@ rewarded nor penalized. Summarization / TL;DR is a bonus note only.
 
 ## Run 2 — re-run (contaminated, not blind)
 
-Pending grading.
+`SamuelJacksonGrim/resonance-journal-rerun@2c8acb9`, against framework
+`@bab6361`. The builder said up front that it had found and read this rubric,
+so the score shows what the framework plus the answer key produces. It is not
+evidence of what the framework produces alone.
+
+| B1 | B2 | B3 | B4 | B5 | B6 | P1 | P2 | P3 | P4 | P5 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| pass | pass | pass | pass | pass | pass | pass | pass | pass | pass | pass |
+
+**Product 6/6 · Process 5/5 (contaminated).**
+
+Notes: delete guarded by `--yes`, revisions capped at 20 per entry, `graph`
+depth 1–5 plus `path`, Markdown export with relative links and backlinks,
+`--from`/`--to` date filters, and an idempotent JSON import keyed by UUID.
+Depth `thin`, and the validator passes. Tests pass (reviewer re-ran them).
+
+## Run 3 — blind (unseen prompt, no rubric)
+
+`SamuelJacksonGrim/resonance-journal-blind@ffabeb3`. The prompt was *"Build me
+something that weighs semantic relationships between words for storage that
+makes accessing them easy for an AI to pull when relevant."* It was judged only
+against its own Intent Card and PIPELINE's Done list.
+
+- It surfaced 12 implied counterparts with reasons (forget/unrelate, export and
+  import with links intact, multi-hop recall, a "why" path for each result,
+  date filters, and exclusions for embeddings and reinforcement).
+- Every include was built and tested: 28 tests pass, and the reviewer ran the
+  main path by hand.
+- Growth is bounded (`max_pairs`, fan-out caps). The live boundary held: no
+  model download, no API calls.
+- Depth `standard` (the MCP server is a second process). The validator passes.
+- **Framework defect found:** it applied the one-shot rule because "no human
+  was present to answer". The human never said one-shot and was reachable.
+  SELECTOR had no rule for runs where the builder cannot tell whether anyone
+  will answer.
