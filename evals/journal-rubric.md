@@ -102,7 +102,10 @@ against its own Intent Card and PIPELINE's Done list.
 - Growth is bounded (`max_pairs`, fan-out caps). The live boundary held: no
   model download, no API calls.
 - Depth `standard` (the MCP server is a second process). The validator passes.
-- **Framework defect found:** it applied the one-shot rule because "no human
-  was present to answer". The human never said one-shot and was reachable.
-  SELECTOR had no rule for runs where the builder cannot tell whether anyone
-  will answer.
+- It read the request as one-shot. The human confirmed that was intended: the
+  vague wording was deliberate. It chose the reading with the fewest escalation
+  triggers and put its guesses first in the handover. That is the framework
+  working as designed, not a defect.
+- One app flaw: search does not fold accents ("zurich" misses "Zürich").
+
+**Verdict (human):** a win.
