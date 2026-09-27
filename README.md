@@ -44,7 +44,8 @@ and direct the fix. Every step below is a public commit or PR.
    multi-hop recall that explains why each result was pulled, bounded storage,
    an MCP server, and 28 passing tests. It came with no model downloads or API
    calls, and with its own list of expected-but-unstated features.
-   ([blind repo](https://github.com/SamuelJacksonGrim/resonance-journal-blind))
+   **See what it built:
+   [resonance-journal-blind](https://github.com/SamuelJacksonGrim/resonance-journal-blind)**
 5. **Carrying it back.** Reviewing that build surfaced an accent-matching bug
    ("zurich" vs "Zürich"). I had it fixed there, then found the same class of
    bug in my main project's fallback search and fixed that too, with tests.
