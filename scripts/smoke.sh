@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+# Resonance Journal — Copyright (C) 2026 Samuel Jackson Grim
+# SPDX-License-Identifier: AGPL-3.0-only OR LicenseRef-Commercial
 # Smoke test: the main path exactly as a user would type it, against a
 # throwaway journal. Exits non-zero on the first failure.
 set -eu

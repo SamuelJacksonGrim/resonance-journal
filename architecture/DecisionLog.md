@@ -5,7 +5,7 @@ order: 99
 fills: "architectural memory — consequential decisions, not every change"
 depends_on: []
 filled_by: both
-last_decision: D-007
+last_decision: D-008
 ---
 
 # DecisionLog — Resonance Journal
@@ -125,3 +125,18 @@ last_decision: D-007
   here are built from Types and Contracts. This gap belongs to the
   methodology, and it is reported upstream in the handover.
 - **Affects:** Interfaces frontmatter.
+
+### D-008 — Under what terms is this released?
+- **Date:** 2026-09-27
+- **Decided by:** human (the AI applied it)
+- **Status:** active
+- **Decision:** Dual license, AGPL-3.0-only OR commercial, mirroring
+  resonance-memory: LICENSE, LICENSING.md, COMMERCIAL-LICENSE.md, NOTICE,
+  CONTRIBUTING.md, legal/, SPDX headers on source files, README badges, and
+  license metadata in pyproject.toml. legal/AUTHORSHIP.md records the one-shot
+  process as it actually happened, together with the author's position that
+  the work is protected through the methodology and the templates it was
+  instantiated from.
+- **Alternatives:** Copy resonance-memory's authorship record word for word
+  (rejected: its multi-model account is false for this project).
+- **Affects:** repository root, legal/, source file headers.

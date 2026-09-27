@@ -9,6 +9,14 @@ description = "A small local-first journal: create, edit, tag, link, search, vie
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
+license = {text = "AGPL-3.0-only OR LicenseRef-Commercial"}
+authors = [{name = "Samuel Jackson Grim", email = "samgrim97@gmail.com"}]
+classifiers = [
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "License :: Other/Proprietary License",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 
 [project.scripts]
 rj = "resonance_journal.cli:main"
